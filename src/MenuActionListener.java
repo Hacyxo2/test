@@ -10,10 +10,11 @@ public class MenuActionListener implements ActionListener {
 
 	private MainFrame mainWindow = null;
 	private JTable table = null;
+	private JScrollPane scroll = new JScrollPane(table);
 	public boolean a = false;
 	public MenuActionListener(MainFrame mainWindow) {
 		this.mainWindow = mainWindow;
-		createTable(a);
+		createTable();
 		System.out.println("1");
 	}
 	
@@ -26,18 +27,18 @@ public class MenuActionListener implements ActionListener {
 		
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("Members ...")) {
-			a = true;
-			
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			String[] header = { "id", "name", "password" };
+			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
 			
 			Database.getInstance().insertJTable(model);
 			System.out.println("members... ok"+" "+ a);
 		} 
 		else if (e.getActionCommand().equals("Book List")) {
-			a = false;
-			
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			String[] header = {"id", "isbn", "number", "authors", "title", "publisher", "book_date", "status", "regist_date"};
+			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
 			BookDatabase.getInstance().insertJTable(model);
 			System.out.println("book list... ok"+" "+a);
@@ -68,24 +69,11 @@ public class MenuActionListener implements ActionListener {
 		}
 	}
 	
-	private void createTable(boolean a) {
-		
-		if (a == true) {
-			String[] header = { "id", "name", "password" };
+	private void createTable() {
+			String[] header = {};
 			DefaultTableModel model = new DefaultTableModel(header, 0);
 			table = new JTable(model);
-			JScrollPane scroll = new JScrollPane(table);
+			scroll = new JScrollPane(table);
 			mainWindow.add(scroll);
-	
-		}
-		else{
-			
-			String[] header = {"id", "isbn", "number", "authors", "title", "publisher", "book_date", "status", "regist_date"};
-			DefaultTableModel model = new DefaultTableModel(header,0);
-			table = new JTable(model);
-			JScrollPane scroll = new JScrollPane(table);
-			mainWindow.add(scroll);
-		
-		}
 	}	
 }
