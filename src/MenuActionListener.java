@@ -49,7 +49,17 @@ public class MenuActionListener implements ActionListener {
 			dialog.setVisible(true);
 		} 
 		else if (e.getActionCommand().equals(Const.LOGIN)) {
-			new LoginWindows();
+			Object[] option = { "Yes", "No" };
+			int response = JOptionPane.showOptionDialog(null, "Do you want to log in with a different ID?", "Warning",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
+			/*0은 yes, 1은 no*/
+			if (response == 0) {
+				System.out.println("Yes");
+				new LoginWindows();
+				closeWindow();
+			} else if (response == 1) {
+				System.out.println("No");
+			}
 			closeWindow();
 			System.out.println("log-in... ok");
 		}
@@ -67,12 +77,21 @@ public class MenuActionListener implements ActionListener {
 				System.out.println("No");
 			}
 		}
+		else if (e.getActionCommand().equals(Const.SEARCH)) {
+			new Search();
+			closeWindow();
+		}
 	}
 	
 	private void createTable() {
 			String[] header = {};
-			DefaultTableModel model = new DefaultTableModel(header, 0);
+			DefaultTableModel model = new DefaultTableModel(header, 0){
+	            public boolean isCellEditable(int rowIndex, int mColIndex) { //수정 불가
+	                return false;
+	            }
+	        };
 			table = new JTable(model);
+			table.setAutoCreateRowSorter(true);
 			scroll = new JScrollPane(table);
 			mainWindow.add(scroll);
 	}	

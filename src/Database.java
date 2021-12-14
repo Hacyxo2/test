@@ -7,6 +7,7 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 public class Database {
+	
 	private volatile static Database instance = null;
 	private Connection connection = null;
 	private Database() {

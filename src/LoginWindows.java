@@ -9,12 +9,12 @@ import javax.swing.JTextField;
 
 public class LoginWindows extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private LoginButtonListener buttonListener = null;
+	private ButtonListener buttonListener = null;
 	private JTextField nameTextField = null;
 	private JPasswordField pwdTextField = null;
-
+	
 	public LoginWindows() {
-		buttonListener = new LoginButtonListener(this);
+		buttonListener = new ButtonListener(this);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

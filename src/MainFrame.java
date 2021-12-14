@@ -39,9 +39,14 @@ public class MainFrame extends JFrame {
 		bookMenu.add(addBookMenuItem);
 		bookMenu.add(bookListMenuItem);
 		
+		JMenu functionMenu = new JMenu("function");
+		JMenuItem searchMenuItem = new JMenuItem(Const.SEARCH);
+		functionMenu.add(searchMenuItem);
+		
 		mb.add(personMenu);
 		mb.add(memberMenu);
 		mb.add(bookMenu);
+		mb.add(functionMenu);
 		
 		MenuActionListener menuListener = new MenuActionListener(this);
 		loginMenuItem.addActionListener(menuListener);
@@ -49,6 +54,7 @@ public class MainFrame extends JFrame {
 		membersMenuItem.addActionListener(menuListener);
 		addBookMenuItem.addActionListener(menuListener);
 		bookListMenuItem.addActionListener(menuListener);
+		searchMenuItem.addActionListener(menuListener);
 		setJMenuBar(mb);
 	}
 }

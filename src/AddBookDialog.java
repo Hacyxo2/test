@@ -84,7 +84,7 @@ public class AddBookDialog extends JDialog implements ActionListener {
                 dispose(); //다이얼로그 제거
             }
         });
-		
+        setLocationRelativeTo(null);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -95,7 +95,7 @@ public class AddBookDialog extends JDialog implements ActionListener {
 				JOptionPane.showMessageDialog(null, "The name is empty");
 				idField.requestFocus();
 			}
-			else if(isbnField.getText().length() == 0) {
+			if(isbnField.getText().length() == 0) {
 				JOptionPane.showMessageDialog(null, "The isbn is empty");
 				isbnField.requestFocus();
 			}
@@ -131,15 +131,15 @@ public class AddBookDialog extends JDialog implements ActionListener {
 			{
 					/* 데이터베이스에 값을 입력합니다. */
 					BookDatabase.getInstance().insertMemberData(
-							Integer.parseInt(idField.getText()), 
-							isbnField.getText(),
-							numberField.getText(),
-							authorsField.getText(),
-							titleField.getText(),
-							publisherField.getText(),
-							book_dateField.getText(),
-							statusField.getText(),
-							regist_dateField.getText());
+							Integer.parseInt(idField.getText()), //책의 식별자
+							isbnField.getText(),      //도서의 ISBN값
+							numberField.getText(),    //책의 등록번호(도서관리번호)
+							authorsField.getText(),   //책의 저자
+							titleField.getText(),     //책 제목
+							publisherField.getText(), //출판사
+							book_dateField.getText(), //출판일
+							statusField.getText(),    //대출 상태
+							regist_dateField.getText()); // 등록일
 				
 				dispose();	
 			}
