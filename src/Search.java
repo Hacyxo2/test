@@ -47,7 +47,7 @@ public class Search extends JFrame {
 		JPanel panelCenter = new JPanel();
 		panel1.add(panelCenter, BorderLayout.CENTER);
 		
-		String[] header = {"ㅎㅇ"};
+		String[] header = {"전체 도서목록은 Search를 눌러주세요"};
 		DefaultTableModel model = new DefaultTableModel(header, 0){
 			/**
 			 * 

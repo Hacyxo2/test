@@ -59,7 +59,6 @@ public class MenuActionListener implements ActionListener {
 			} else if (response == 1) {
 				System.out.println("No");
 			}
-			closeWindow();
 			System.out.println("log-in... ok");
 		}
 		else if (e.getActionCommand().equals(Const.LOGOUT)) {
