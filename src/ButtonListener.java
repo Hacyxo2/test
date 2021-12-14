@@ -49,7 +49,7 @@ public class ButtonListener implements ActionListener, MouseListener{
 			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
 			try {
-				BookDatabase.getInstance().searchJTable(model,
+				Database.getInstance().searchJTable(model,
 						search.getComboBox().getSelectedItem().toString(), search.getSearch().getText());
 				
 			} catch (SQLException e1) {
@@ -64,7 +64,7 @@ public class ButtonListener implements ActionListener, MouseListener{
 			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
 			try {
-				BookDatabase.getInstance().checkOutJTable(model,
+				Database.getInstance().checkOutJTable(model,
 						checkOutBook.getComboBox().getSelectedItem().toString(), checkOutBook.getSearch().getText());
 				checkOutBook.repaint();
 			} catch (SQLException e1) {
@@ -79,7 +79,7 @@ public class ButtonListener implements ActionListener, MouseListener{
 			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
 			try {
-					BookDatabase.getInstance().checkInJTable(model,
+					Database.getInstance().checkInJTable(model,
 							checkInBook.getComboBox().getSelectedItem().toString(), checkInBook.getSearch().getText());
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -114,7 +114,7 @@ public class ButtonListener implements ActionListener, MouseListener{
 				//있으면
 				if(Database.getInstance().checkExistName(window.getNameTextField().getText()) == true) {
 					/* 모든 조건이 성립하면 아래를 실행합니다.*/
-					BookDatabase.getInstance().name = window.getNameTextField().getText();
+					Database.getInstance().name = window.getNameTextField().getText();
 					new MainFrame();
 					/* 로그인 윈도우창은 닫습니다. */
 					closeWindow();
@@ -169,10 +169,10 @@ public class ButtonListener implements ActionListener, MouseListener{
 			new CheckInBook();
 		}
 		else if(e.getActionCommand().equals(Const.BOOKCHECKOUT)) {
-			BookDatabase.getInstance().checkOut(id);
+			Database.getInstance().checkOut(id);
 		}
 		else if(e.getActionCommand().equals(Const.BOOKCHECKIN)) {
-			BookDatabase.getInstance().checkIn(id);
+			Database.getInstance().checkIn(id);
 		}
 	}
 	

@@ -18,7 +18,7 @@ public class AddBookDialog extends JDialog implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField idField = null;
+//	private JTextField idField = null;
 	private JTextField isbnField = null;
 	private JTextField numberField = null;
 	private JTextField authorsField = null;
@@ -40,9 +40,9 @@ public class AddBookDialog extends JDialog implements ActionListener {
         JPanel panelCenter = new JPanel();
         panel1.add(panelCenter, BorderLayout.CENTER);
         panelCenter.setLayout(new FlowLayout());
-        idField = new JTextField(20);
-        panelCenter.add(new JLabel("-----------------------id-----------------------"));
-        panelCenter.add(idField);
+//        idField = new JTextField(20);
+//        panelCenter.add(new JLabel("-----------------------id-----------------------"));
+//        panelCenter.add(idField);
         isbnField = new JTextField(20);
         panelCenter.add(new JLabel("----------------------isbn----------------------"));
         panelCenter.add(isbnField);
@@ -91,11 +91,11 @@ public class AddBookDialog extends JDialog implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand().equals(Const.OK)) {
 			/* 1. name과 password에 값이 있는지 체크합니다. */
-			if(idField.getText().length() == 0) {
-				JOptionPane.showMessageDialog(null, "The name is empty");
-				idField.requestFocus();
-			}
-			if(isbnField.getText().length() == 0) {
+//			if(idField.getText().length() == 0) {
+//				JOptionPane.showMessageDialog(null, "The name is empty");
+//				idField.requestFocus();
+//			}
+			if (isbnField.getText().length() == 0) {
 				JOptionPane.showMessageDialog(null, "The isbn is empty");
 				isbnField.requestFocus();
 			}
@@ -127,11 +127,11 @@ public class AddBookDialog extends JDialog implements ActionListener {
 				JOptionPane.showMessageDialog(null, "The regist_date is empty");
 				regist_dateField.requestFocus();
 			}
+			
 			else
 			{
 					/* 데이터베이스에 값을 입력합니다. */
-					BookDatabase.getInstance().insertMemberData(
-							Integer.parseInt(idField.getText()), //책의 식별자
+					Database.getInstance().insertBookData(
 							isbnField.getText(),      //도서의 ISBN값
 							numberField.getText(),    //책의 등록번호(도서관리번호)
 							authorsField.getText(),   //책의 저자

@@ -10,7 +10,6 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import java.awt.SystemColor;
 
 public class CheckOutBook extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -50,6 +49,11 @@ public class CheckOutBook extends JFrame {
 		
 		String[] header = {"전체 대출 가능 목록은 Search를 눌러주세요"};
 		DefaultTableModel model = new DefaultTableModel(header, 0){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int i, int c){
 				return false;
 			}

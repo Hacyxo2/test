@@ -11,7 +11,6 @@ public class MenuActionListener implements ActionListener {
 	private MainFrame mainWindow = null;
 	private JTable table = null;
 	private JScrollPane scroll = new JScrollPane(table);
-	public boolean a = false;
 	public MenuActionListener(MainFrame mainWindow) {
 		this.mainWindow = mainWindow;
 		createTable();
@@ -33,15 +32,15 @@ public class MenuActionListener implements ActionListener {
 			model.setRowCount(0);
 			
 			Database.getInstance().insertJTable(model);
-			System.out.println("members... ok"+" "+ a);
+			System.out.println("members... ok");
 		} 
 		else if (e.getActionCommand().equals("Book List")) {
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
 			String[] header = {"id", "isbn", "number", "authors", "title", "publisher", "book_date", "status", "regist_date"};
 			model.setColumnIdentifiers(header);
 			model.setRowCount(0);
-			BookDatabase.getInstance().insertJTable(model);
-			System.out.println("book list... ok"+" "+a);
+			Database.getInstance().insertBookJTable(model);
+			System.out.println("book list... ok");
 		}
 		else if (e.getActionCommand().equals(Const.ADDBOOK)) {
 			System.out.println("add Book... ok");
@@ -86,7 +85,12 @@ public class MenuActionListener implements ActionListener {
 	private void createTable() {
 			String[] header = {};
 			DefaultTableModel model = new DefaultTableModel(header, 0){
-	            public boolean isCellEditable(int rowIndex, int mColIndex) { //수정 불가
+	            /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				public boolean isCellEditable(int rowIndex, int mColIndex) { //수정 불가
 	                return false;
 	            }
 	        };

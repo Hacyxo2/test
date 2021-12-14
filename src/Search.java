@@ -10,7 +10,6 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import java.awt.SystemColor;
 
 public class Search extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -50,6 +49,11 @@ public class Search extends JFrame {
 		
 		String[] header = {"¤¾¤·"};
 		DefaultTableModel model = new DefaultTableModel(header, 0){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int i, int c){
 				return false;
 			}

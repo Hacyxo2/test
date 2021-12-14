@@ -3,9 +3,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
